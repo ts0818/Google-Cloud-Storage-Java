@@ -1,0 +1,13 @@
+package com.example.demo.type.file;
+
+public enum MethodForResize {
+	ENLARGE_FROM_ROW
+	, ENLARGE_FROM_COL
+	, ENLARGE_BY_SQUARE
+	, MINIMIZE_FROM_ROW
+	, MINIMIZE_FROM_COL
+	, MINIMIZE_BY_SQUARE
+	, BOTH_FROM_ROW
+	, BOTH_FROM_COL
+	, BOTH_BY_SQUARE
+}

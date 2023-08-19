@@ -1,5 +1,7 @@
 package com.example.demo.controller;
 
+import java.io.IOException;
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -30,6 +32,18 @@ public class GoogleCloudStrageApiController {
 		BeanUtils.copyProperties(googleCloudStorageInfoDto, googleCloudStorageInfo);
 		int result = googleCloudStorageInfoServiceImpl.save(googleCloudStorageInfo);
 		return result != 0 ? true: false;
+	}
+	
+	@PostMapping("upload-and-resize")
+	public void uploadAndResizeImage(@RequestParam("upload_file") MultipartFile uploadFile) {
+		
+		try {
+			cloudStorageApiServiceImpl.executeCyclicBarrierForImageResizeAndUpload(uploadFile);
+		} catch (IllegalStateException | IOException e) {
+			// TODO 自動生成された catch ブロック
+			e.printStackTrace();
+		}
+		
 	}
 	
 }
